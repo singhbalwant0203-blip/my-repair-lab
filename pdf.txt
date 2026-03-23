@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repair Portal | ProFix Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #2563eb; --success: #059669; --bg: #f8fafc; --text: #1e293b; --whatsapp: #25D366; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .wrapper { max-width: 800px; margin: 0 auto; padding-bottom: 80px; }
+        
+        /* Header & Main Card */
+        header { text-align: center; margin-bottom: 30px; }
+        .logo { font-weight: 600; font-size: 24px; color: var(--primary); }
+        .card { background: white; border-radius: 16px; padding: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+
+        /* Progress Stepper */
+        .stepper { display: flex; justify-content: space-between; margin-bottom: 35px; }
+        .step { text-align: center; flex: 1; position: relative; font-size: 12px; color: #94a3b8; }
+        .step-dot { width: 30px; height: 30px; border-radius: 50%; background: #e2e8f0; margin: 0 auto 8px; line-height: 30px; font-weight: bold; color: white; }
+        .step.active .step-dot { background: var(--primary); }
+        .step.active { color: var(--primary); font-weight: 600; }
+        .step.completed .step-dot { background: var(--success); }
+
+        /* Info Section */
+        .summary-box { background: #f1f5f9; padding: 20px; border-radius: 12px; margin: 20px 0; border-left: 4px solid var(--primary); }
+        .price-row { display: flex; justify-content: space-between; margin: 8px 0; }
+        .total { font-weight: bold; font-size: 1.2em; color: var(--primary); border-top: 1px solid #cbd5e1; padding-top: 10px; }
+
+        /* Interactive Elements */
+        select, input { width: 100%; padding: 12px; margin-top: 8px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; }
+        .btn-primary { background: var(--primary); color: white; border: none; padding: 16px; width: 100%; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 20px; }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-label {
+            position: fixed;
+            bottom: 42px;
+            right: 100px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <div class="logo">ProFix Mobile Labs</div>
+        <p>Repair Order: <strong>#8842-FIX</strong></p>
+    </header>
+
+    <div class="card">
+        <div class="stepper">
+            <div class="step completed"><div class="step-dot">✓</div>Dropped</div>
+            <div class="step completed"><div class="step-dot">✓</div>Fixed</div>
+            <div class="step active"><div class="step-dot">3</div>Ready</div>
+            <div class="step"><div class="step-dot">4</div>Return</div>
+        </div>
+
+        <h3>Your Repair Summary</h3>
+        <div class="summary-box">
+            <div class="price-row"><span>Status:</span> <span style="color:var(--success); font-weight:bold;">Passed Quality Check</span></div>
+            <div class="price-row"><span>Technician Note:</span> <i>"Display replaced & water-seal reapplied."</i></div>
+            <div class="price-row total"><span>Total to Pay:</span> <span>$85.00</span></div>
+            <p style="font-size: 12px; margin-top: 10px;">Questions? <a href="https://wa.me/YOUR_NUMBER" style="color: var(--primary);">Chat with your tech now.</a></p>
+        </div>
+
+        <label>How would you like your phone back?</label>
+        <select id="mode" onchange="document.getElementById('addressBox').style.display = (this.value=='delivery')?'block':'none'">
+            <option value="pickup">Collect from Store (Today 9am-6pm)</option>
+            <option value="delivery">Home Delivery (Courier)</option>
+        </select>
+
+        <div id="addressBox" style="display:none; margin-top:15px;">
+            <label>Delivery Address</label>
+            <input type="text" placeholder="Enter your full address">
+        </div>
+
+        <button class="btn-primary" onclick="alert('Booking confirmed!')">Confirm Selection</button>
+    </div>
+</div>
+
+<div class="whatsapp-label">Chat with Tech</div>
+<a href="https://wa.me/YOUR_NUMBER?text=Hi%2C%20I'm%20inquiring%20about%20my%20repair%20order%20%238842" class="whatsapp-float" target="_blank">
+    <svg width="35" height="35" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+</a>
+
+</body>
+</html>
